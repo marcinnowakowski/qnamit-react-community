@@ -1,0 +1,22 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 200"
+  width="200"
+  height="200"
+  fill="none"
+>
+  <!-- Circle background -->
+  <circle cx="100" cy="100" r="95" fill="#E0F7FA" stroke="#0097A7" stroke-width="4" />
+
+  <!-- Stethoscope -->
+  <path
+    d="M60 90 Q60 50 100 50 Q140 50 140 90 L140 130 Q140 150 120 150 Q100 150 100 130 L100 90"
+    fill="none"
+    stroke="#0097A7"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="60" cy="90" r="10" fill="#0097A7" />
+  <circle cx="140" cy="90" r="10" fill="#0097A7" />
+</svg>

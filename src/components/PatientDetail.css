@@ -1,0 +1,52 @@
+.patient-detail {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px auto;
+  max-width: 600px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.patient-detail h2 {
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.patient-detail p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.patient-detail p strong {
+  color: #007bff;
+}
+
+.patient-detail button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.patient-detail button:hover {
+  background-color: #0056b3;
+}
+
+.patient-detail button:focus {
+  outline: none;
+  box-shadow: 0 0 4px 2px rgba(0, 123, 255, 0.5);
+}
+
+.patient-detail button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}

@@ -1,0 +1,77 @@
+.patient-number-input {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px auto;
+  max-width: 400px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.patient-number-input h2 {
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.patient-number-input form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.patient-number-input label {
+  font-size: 14px;
+  color: #555;
+  text-align: left;
+}
+
+.patient-number-input input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.patient-number-input input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.patient-number-input button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.patient-number-input button:hover {
+  background-color: #0056b3;
+}
+
+.patient-number-input button:focus {
+  outline: none;
+  box-shadow: 0 0 4px 2px rgba(0, 123, 255, 0.5);
+}
+
+.patient-number-input button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.patient-number-input p {
+  margin: 0;
+  font-size: 14px;
+  color: #f00;
+}
+
+.patient-number-input p:nth-of-type(1) {
+  margin-top: 8px;
+}
