@@ -1,13 +1,26 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../../constants';
 
-type SurveySummary = {
+type Survey = {
+  id: number
   title: string;
-  slug: string;
+  description: string;
+  slug: string
+};
+
+export type Question = {
+  id: number
+  title: string;
+  question_text: string;
+}
+
+type SurveyWithQuestions = {
+  survey: Survey;
+  questions: Question[];
 };
 
 type SurveySummaryState = {
-  data: SurveySummary[] | null;
+  data: SurveyWithQuestions | null;
   loading: boolean;
   error: string | null;
 };
@@ -19,38 +32,38 @@ const initialState: SurveySummaryState = {
 };
 
 // Thunk to fetch patient details
-export const fetchSurveySummaries = createAsyncThunk(
-  'survey/',
-  async () => {
-    const response = await fetch(`${API_BASE_URL}/survey/`);
+export const fetchSurveyWithQuestions = createAsyncThunk(
+  'survey/<slug>',
+  async (slug: string) => {
+    const response = await fetch(`${API_BASE_URL}/survey/${slug}/`);
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`);
     }
-    return (await response.json()) as SurveySummary[];
+    return (await response.json()) as SurveyWithQuestions;
   }
 );
 
 // Patient detail slice
-const surveyList = createSlice({
-  name: 'surveyList',
+const surveyWithQuestions = createSlice({
+  name: 'surveyWithQuestions',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchSurveySummaries.pending, (state) => {
+      .addCase(fetchSurveyWithQuestions.pending, (state) => {
         state.loading = true;
         state.error = null;
         state.data = null;
       })
-      .addCase(fetchSurveySummaries.fulfilled, (state, action) => {
+      .addCase(fetchSurveyWithQuestions.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(fetchSurveySummaries.rejected, (state, action) => {
+      .addCase(fetchSurveyWithQuestions.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Failed to fetch patient details';
       });
   },
 });
 
-export default surveyList.reducer;
+export default surveyWithQuestions.reducer;

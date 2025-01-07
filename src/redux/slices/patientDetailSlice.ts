@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../../constants';
 
 type PatientDetail = {
+  id: number;
   patient_number: string;
   registered_at: Date;
 };
@@ -21,8 +22,8 @@ const initialState: PatientDetailState = {
 // Thunk to fetch patient details
 export const fetchPatientDetail = createAsyncThunk(
   'patient/<patient_number>/',
-  async (patient_number: string) => {
-    const response = await fetch(`${API_BASE_URL}/patient/${patient_number}/`);
+  async (patientNumber: string) => {
+    const response = await fetch(`${API_BASE_URL}/patient/${patientNumber}/`);
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`);
     }
