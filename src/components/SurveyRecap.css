@@ -1,0 +1,80 @@
+.survey-recap {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.survey-recap h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.survey-recap p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.survey-recap p strong {
+  color: #000;
+}
+
+.survey-recap button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.survey-recap button:hover {
+  transform: scale(1.05);
+}
+
+.survey-recap button[type="button"]:nth-child(1) {
+  background-color: #28a745; /* Green for repeating survey */
+}
+
+.survey-recap button[type="button"]:nth-child(1):hover {
+  background-color: #218838;
+}
+
+.survey-recap button[type="button"]:nth-child(2) {
+  background-color: #007bff; /* Blue for selecting another survey */
+}
+
+.survey-recap button[type="button"]:nth-child(2):hover {
+  background-color: #0056b3;
+}
+
+.survey-recap button[type="button"]:nth-child(3) {
+  background-color: #6c757d; /* Gray for switching patient */
+}
+
+.survey-recap button[type="button"]:nth-child(3):hover {
+  background-color: #5a6268;
+}
+
+.survey-recap p:last-child {
+  font-weight: bold;
+  color: #28a745; /* Green for successful submission message */
+}
+
+@media (max-width: 768px) {
+  .survey-recap {
+    padding: 15px;
+  }
+
+  .survey-recap button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}

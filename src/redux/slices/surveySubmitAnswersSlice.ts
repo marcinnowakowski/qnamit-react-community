@@ -1,8 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../../constants';
 
-// Define the patient registration response type
-type RegisterResponse = {
+export type Answer = {
+  question_id: number;
+  answer_text: string;
+}
+
+export type SurveySubmission = {
+  patient_id: number;
+  survey_id: number;
+  answers: Answer[];
+}
+
+type SurveySubmissionResponse = {
   id: number;
 };
 
@@ -18,13 +28,13 @@ const initialState: PatientRegisterState = {
 };
 
 // Async thunk for patient registration
-export const registerPatient = createAsyncThunk<
-  RegisterResponse,
-  { patient_number: string },
+export const submitSurveyWithAnswers = createAsyncThunk<
+  SurveySubmissionResponse,
+  SurveySubmission,
   { rejectValue: string }
->('POST:patient/', async (payload, { rejectWithValue }) => {
+>('POST:survey-submission/', async (payload, { rejectWithValue }) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/patient/`, {
+    const response = await fetch(`${API_BASE_URL}/survey-submission/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,32 +47,32 @@ export const registerPatient = createAsyncThunk<
       return rejectWithValue(errorMessage || 'Failed to register patient.');
     }
 
-    return (await response.json()) as RegisterResponse;
+    return (await response.json()) as SurveySubmissionResponse;
   } catch (error) {
     return rejectWithValue((error as Error).message);
   }
 });
 
 // Slice definition
-const patientRegister = createSlice({
-  name: 'patientRegister',
+const surveySubmitAnswers = createSlice({
+  name: 'surveySubmitAnswers',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(registerPatient.pending, (state) => {
+      .addCase(submitSurveyWithAnswers.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(registerPatient.fulfilled, (state) => {
+      .addCase(submitSurveyWithAnswers.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
       })
-      .addCase(registerPatient.rejected, (state, action) => {
+      .addCase(submitSurveyWithAnswers.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload || 'An error occurred while registering the patient.';
+        state.error = action.payload || 'An error occurred while submitting survey.';
       });
   },
 });
 
-export default patientRegister.reducer;
+export default surveySubmitAnswers.reducer;

@@ -6,12 +6,12 @@ import { RootState, AppDispatch } from '../redux/store';
 import './SurveySelect.css';
 
 type SurveySelectProps = {
-  patient_number: string;
+  patientNumber: string;
   setPatientNumber: (patientNumber: string | null) => void;
   setSurveySlug: (surveySlug: string | null) => void;
 };
 
-const SurveySelect: React.FC<SurveySelectProps> = ({ patient_number, setPatientNumber, setSurveySlug }) => {
+const SurveySelect: React.FC<SurveySelectProps> = ({ patientNumber, setPatientNumber, setSurveySlug }) => {
   const [selectedSurveySlug, setSelectedSurveySlug] = useState<string>('');
   const [inputError, setInputError] = useState<string | null>(null);
   const dispatch = useDispatch<AppDispatch>();
@@ -19,29 +19,17 @@ const SurveySelect: React.FC<SurveySelectProps> = ({ patient_number, setPatientN
   const { data: surveysData, loading: surveysLoading, error: surveysError } = useSelector((state: RootState) => state.surveyList);
 
   useEffect(() => {
-    dispatch(fetchPatientDetail(patient_number));
-  }, [dispatch, patient_number]);
+    dispatch(fetchPatientDetail(patientNumber));
+  }, [dispatch, patientNumber]);
 
   useEffect(() => {
     dispatch(fetchSurveySummaries());
   }, [dispatch]);
 
-  if (patientLoading) return <p>Loading patient details...</p>;
-  if (patientError) return <p>Error: {patientError}</p>;
-  if (!patientData) return <p>No patient details available.</p>;
-
-  if (surveysLoading) return <p>Loading surveys...</p>;
-  if (surveysError) return <p>Error: {surveysError}</p>;
-  if (!surveysData) return <p>No surveys available.</p>;
-
   // Format the `registered_at` field
   const formatDateTime = (dateString: Date | string): string => {
     const date = new Date(dateString);
     return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-  };
-
-  const handleOtherPatient = () => {
-    setPatientNumber(null);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -57,6 +45,18 @@ const SurveySelect: React.FC<SurveySelectProps> = ({ patient_number, setPatientN
     setInputError(null);
     setSurveySlug(selectedSurveySlug); // Pass the survey slug to the parent component
   };
+
+  const handleOtherPatient = () => {
+    setPatientNumber(null);
+  };
+
+  if (patientLoading) return <p>Loading patient details...</p>;
+  if (patientError) return <p>Error: {patientError}</p>;
+  if (!patientData) return <p>No patient details available.</p>;
+
+  if (surveysLoading) return <p>Loading surveys...</p>;
+  if (surveysError) return <p>Error: {surveysError}</p>;
+  if (!surveysData) return <p>No surveys available.</p>;
 
   return (
     <div className="select-survey">
