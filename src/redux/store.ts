@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import patientDetailReducer from './apiSlice/patientDetailSlice';
-import patientRegisterReducer from './apiSlice/patientRegisterSlice';
+import patientDetailReducer from './slices/patientDetailSlice';
+import patientRegisterReducer from './slices/patientRegisterSlice';
+import surveyListReducer from './slices/surveyListSlice'
 
 const store = configureStore({
   reducer: {
     patientDetail: patientDetailReducer,
     patientRegister: patientRegisterReducer,
+    surveyList: surveyListReducer,
   },
 });
 

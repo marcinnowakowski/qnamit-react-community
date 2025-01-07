@@ -1,0 +1,91 @@
+.select-survey {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.select-survey h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.select-survey p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.select-survey form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.select-survey label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.select-survey select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+}
+
+.select-survey select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.select-survey button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.select-survey button:hover {
+  background-color: #0056b3;
+}
+
+.select-survey button[type="button"] {
+  background-color: #6c757d;
+}
+
+.select-survey button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+.select-survey p[style="color: red;"] {
+  margin-top: -10px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .select-survey {
+    padding: 15px;
+  }
+
+  .select-survey h2 {
+    font-size: 20px;
+  }
+
+  .select-survey button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
