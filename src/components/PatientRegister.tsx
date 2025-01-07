@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../redux/store';
-import { registerPatient, } from '../redux/apiSlice/patientRegisterSlice';
+import { registerPatient, } from '../redux/slices/patientRegisterSlice';
 import './PatientRegister.css';
 
 type PatientNumberInputProps = {
@@ -13,8 +13,6 @@ const PatientNumberInput: React.FC<PatientNumberInputProps> = ({ setPatientNumbe
   const [inputError, setInputError] = useState<string | null>(null);
   const dispatch = useDispatch<AppDispatch>();
   const {error: registerError} = useSelector((state: RootState) => state.patientRegister);
-  const {error: fetchDetailError} = useSelector((state: RootState) => state.patientDetail);
-
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,7 +39,7 @@ const PatientNumberInput: React.FC<PatientNumberInputProps> = ({ setPatientNumbe
       <h2>Register Patient</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="patientNumber">Patient Number:</label>
+          <label htmlFor="patientNumber">Patient Number: </label>
           <input
             type="text"
             id="patientNumber"
@@ -52,7 +50,6 @@ const PatientNumberInput: React.FC<PatientNumberInputProps> = ({ setPatientNumbe
         </div>
         {inputError && <p style={{ color: 'red' }}>{inputError}</p>}
         {registerError && <p style={{ color: 'red' }}>{registerError}</p>}
-        {fetchDetailError && <p style={{ color: 'red' }}>{fetchDetailError}</p>}
         <button type="submit">Register</button>
       </form>
     </div>
