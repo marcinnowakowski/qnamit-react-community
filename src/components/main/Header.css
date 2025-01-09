@@ -1,0 +1,43 @@
+/* Styling for the header container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #282c34;
+  color: white;
+}
+
+/* Styling for the logo container */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Styling for the logo image */
+.logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+/* Styling for the title text */
+.title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Styling for the logout button */
+.logout-button {
+  padding: 10px 15px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #e63939;
+}

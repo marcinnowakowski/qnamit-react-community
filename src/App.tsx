@@ -1,39 +1,23 @@
-import React, { useState } from 'react';
-import PatientNumberInput from './components/PatientRegister';
-import SurveySelect from './components/SurveySelect';
-import SurveySubmit from './components/SurveySubmit';
-import SurveyRecap from './components/SurveyRecap';
+import React from 'react';
+import './App.css';
+import { useSelector } from 'react-redux';
+import Login from './components/login/Login';
+import Main from './components/main/Main';
+import { RootState } from './redux/store';
+import Footer from './components/main/Footer';
 
 const App: React.FC = () => {
-  const [selectedPatientNumber, setSelectedPatientNumber] = useState<string | null>(null);
-  const [selectedSurveySlug, setSelectedSurveySlug] = useState<string | null>(null);
-  const [recapDisplayed, setRecapDisplayed] = useState<boolean | null>(null);
+    const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+    const footerText = `© ${new Date().getFullYear()} Websigni`;
 
-  return (
-    <div>
-
-      {!selectedPatientNumber && <PatientNumberInput setPatientNumber={setSelectedPatientNumber} />}
-      {selectedPatientNumber && !selectedSurveySlug && <SurveySelect 
-          patientNumber={selectedPatientNumber} 
-          setPatientNumber={setSelectedPatientNumber}
-          setSurveySlug={setSelectedSurveySlug}
-          />}
-      {selectedPatientNumber && selectedSurveySlug && !recapDisplayed && <SurveySubmit
-          patientNumber={selectedPatientNumber}
-          surveySlug={selectedSurveySlug}
-          setPatientNumber={setSelectedPatientNumber}
-          setSurveySlug={setSelectedSurveySlug}
-          setRecapDisplayed={setRecapDisplayed}
-          />}
-      {selectedPatientNumber && selectedSurveySlug && recapDisplayed && <SurveyRecap
-          patientNumber={selectedPatientNumber}
-          surveySlug={selectedSurveySlug}
-          setPatientNumber={setSelectedPatientNumber}
-          setSurveySlug={setSelectedSurveySlug}
-          setRecapDisplayed={setRecapDisplayed}
-          />}
-    </div>
-  );
+    return (
+        <div className="App">
+            <div className="app-container">
+                {isAuthenticated ? <Main /> : <Login />}
+            </div>
+            <Footer text={footerText} />
+        </div>
+    );
 };
 
 export default App;
