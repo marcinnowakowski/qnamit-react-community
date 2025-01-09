@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '../redux/store';
-import { registerPatient, } from '../redux/slices/patientRegisterSlice';
+import { RootState, AppDispatch } from '../../redux/store';
+import { registerPatient, } from '../../redux/slices/patientRegisterSlice';
 import './PatientRegister.css';
 
 type PatientNumberInputProps = {
