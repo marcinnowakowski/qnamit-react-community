@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPatientDetail } from '../redux/slices/patientDetailSlice';
-import { fetchSurveyWithQuestions } from '../redux/slices/surveyWithQuestionsSlice';
-import { RootState, AppDispatch } from '../redux/store';
+import { fetchPatientDetail } from '../../redux/slices/patientDetailSlice';
+import { fetchSurveyWithQuestions } from '../../redux/slices/surveyWithQuestionsSlice';
+import { RootState, AppDispatch } from '../../redux/store';
 import './SurveyRecap.css';
 
 type SurveyRecapProps = {

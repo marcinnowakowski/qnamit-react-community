@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './slices/authSlice';
 import patientDetailReducer from './slices/patientDetailSlice';
 import patientRegisterReducer from './slices/patientRegisterSlice';
 import surveyListReducer from './slices/surveyListSlice'
@@ -11,7 +12,8 @@ const store = configureStore({
     patientRegister: patientRegisterReducer,
     surveyList: surveyListReducer,
     surveyWithQuestions: surveyWithQuestionsReducer,
-    surveySubmitAnswers: surveySubmitAnswersReducer
+    surveySubmitAnswers: surveySubmitAnswersReducer,
+    auth: authReducer
   },
 });
 

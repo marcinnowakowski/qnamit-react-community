@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPatientDetail } from '../redux/slices/patientDetailSlice';
-import { fetchSurveyWithQuestions, Question } from '../redux/slices/surveyWithQuestionsSlice';
-import { submitSurveyWithAnswers, SurveySubmission, Answer } from '../redux/slices/surveySubmitAnswersSlice';
-import { RootState, AppDispatch } from '../redux/store';
+import { fetchPatientDetail } from '../../redux/slices/patientDetailSlice';
+import { fetchSurveyWithQuestions, Question } from '../../redux/slices/surveyWithQuestionsSlice';
+import { submitSurveyWithAnswers, SurveySubmission, Answer } from '../../redux/slices/surveySubmitAnswersSlice';
+import { RootState, AppDispatch } from '../../redux/store';
 import './SurveySubmit.css';
 
 type SurveySubmitProps = {
