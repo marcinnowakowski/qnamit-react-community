@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { API_BASE_URL } from '../../constants';
+import { REST_API_BASE_URL } from '../../constants';
 
 export type Answer = {
   question_id: number;
@@ -34,7 +34,7 @@ export const submitSurveyWithAnswers = createAsyncThunk<
   { rejectValue: string }
 >('POST:survey-submission/', async (payload, { rejectWithValue }) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/survey-submission/`, {
+    const response = await fetch(`${REST_API_BASE_URL}/survey-submission/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

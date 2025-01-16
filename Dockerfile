@@ -10,6 +10,7 @@ RUN npm install
 
 # Copy all files and build the React app
 COPY . ./
+COPY ./.env.docker-dev ./.env
 RUN npm run build
 
 # Use Nginx to serve the built files
