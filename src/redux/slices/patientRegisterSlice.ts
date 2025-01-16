@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { API_BASE_URL } from '../../constants';
+import { REST_API_BASE_URL } from '../../constants';
 
 // Define the patient registration response type
 type RegisterResponse = {
@@ -24,7 +24,7 @@ export const registerPatient = createAsyncThunk<
   { rejectValue: string }
 >('POST:patient/', async (payload, { rejectWithValue }) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/patient/`, {
+    const response = await fetch(`${REST_API_BASE_URL}/patient/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

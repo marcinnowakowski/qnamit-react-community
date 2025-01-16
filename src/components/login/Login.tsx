@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../redux/slices/authSlice';
 import { AppDispatch } from '../../redux/store';
+import { TOKEN_API_BASE_URL } from '../../constants';
 import './Login.css';
 
 const Login: React.FC = () => {
@@ -14,7 +15,7 @@ const Login: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/token/', {
+            const response = await axios.post(`${TOKEN_API_BASE_URL}/`, {
                 username,
                 password,
             });

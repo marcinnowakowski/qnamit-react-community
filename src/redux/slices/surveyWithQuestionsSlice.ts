@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { API_BASE_URL } from '../../constants';
+import { REST_API_BASE_URL } from '../../constants';
 
 type Survey = {
   id: number
@@ -35,7 +35,7 @@ const initialState: SurveySummaryState = {
 export const fetchSurveyWithQuestions = createAsyncThunk(
   'survey/<slug>',
   async (slug: string) => {
-    const response = await fetch(`${API_BASE_URL}/survey/${slug}/`);
+    const response = await fetch(`${REST_API_BASE_URL}/survey/${slug}/`);
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`);
     }
